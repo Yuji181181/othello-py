@@ -101,7 +101,10 @@ while run:
     draw_grid()
     draw_board()
     
+    valid_position_list = get_valid_positions()
     
+    for x, y in valid_position_list:
+        pygame.draw.circle(screen, YELLOW, (x * square_size + 50, y * square_size + 50), 45, 3)
     
     
     
