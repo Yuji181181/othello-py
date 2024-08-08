@@ -1,8 +1,6 @@
 import pygame
 pygame.init()
-screen_width = 800
-screen_height = 800
-screen = pygame.display.set_mode((screen_width, screen_height))
+screen = pygame.display.set_mode((800,800))
 pygame.display.set_caption("othello.py")
 
 BLACK = (0, 0, 0)
@@ -29,11 +27,13 @@ board = [
 run = True
 while run:
     
+    screen.fill(GREEN)
     
     
     
-    
-    
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            run = False
     
     
     
@@ -49,3 +49,5 @@ while run:
     pygame.display.update()
 
 pygame.quit()
+
+
