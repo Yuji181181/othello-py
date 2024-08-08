@@ -18,11 +18,11 @@ player = 1
 game_over = False
 pass_num = 0
 
-font = pygame.font.SysFont(None, 100, bold=False, italic=False)
-black_win_surface = font.render("Black Win!", False, BLACK, RED)
-white_win_surface = font.render("White Win!", False, WHITE, RED)
-draw_surface = font.render("Draw...", False, BLUE, RED)
-reset_surface = font.render("Click to reset!",False, BLACK, RED)
+font = pygame.font.SysFont(None,100,bold=False,italic=False)
+black_win_surface = font.render("Black Win!",False,BLACK,RED)
+white_win_surface = font.render("White Win!",False,WHITE,RED)
+draw_surface = font.render("Draw...", False,BLUE,RED)
+reset_surface = font.render("Click to reset!",False,BLACK,RED)
 
 board = [
     [0, 0, 0, 0, 0, 0, 0, 0],
@@ -45,6 +45,7 @@ vec_table = [
     (0, 1),    
     (1, 1)] 
 
+
 def draw_grid():    
     for i in range(square_num):
         pygame.draw.line(screen,BLACK,(0,i*square_size),(800,i*square_size),3)
@@ -54,9 +55,9 @@ def draw_board():
     for row_index, row in enumerate(board):
         for col_index, col in enumerate(row):
             if col == 1:
-                pygame.draw.circle(screen, BLACK, (col_index * square_size + 50, row_index * square_size + 50), 45)
+                pygame.draw.circle(screen,BLACK,(col_index*square_size+50,row_index*square_size+50),45)
             elif col == -1:
-                pygame.draw.circle(screen, WHITE, (col_index * square_size + 50, row_index * square_size + 50), 45)
+                pygame.draw.circle(screen,WHITE,(col_index*square_size+50,row_index*square_size+50),45)
 
 def get_valid_positions():
     valid_position_list = []
@@ -73,7 +74,7 @@ def get_valid_positions():
                             if 0 <= x < square_num and 0 <= y < square_num and board[y][x] == -player:
                                 continue
                             elif 0 <= x < square_num and 0 <= y < square_num and board[y][x] == player:
-                                valid_position_list.append((col, row))
+                                valid_position_list.append((col,row))
                                 break
                             else:
                                 break
@@ -85,7 +86,7 @@ def flip_pieces(col, row):
         x = vx + col
         y = vy + row
         while 0 <= x < square_num and 0 <= y < square_num and board[y][x] == -player:
-            flip_list.append((x, y))
+            flip_list.append((x,y))
             x += vx
             y += vy
             if 0 <= x < square_num and 0 <= y < square_num and board[y][x] == player:
@@ -99,6 +100,10 @@ while run:
     screen.fill(GREEN)
     draw_grid()
     draw_board()
+    
+    
+    
+    
     
     
     for event in pygame.event.get():
