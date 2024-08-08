@@ -79,6 +79,18 @@ def get_valid_positions():
                                 break
     return valid_position_list
 
+def flip_pieces(col, row):
+    for vx, vy in vec_table:
+        flip_list = []
+        x = vx + col
+        y = vy + row
+        while 0 <= x < square_num and 0 <= y < square_num and board[y][x] == -player:
+            flip_list.append((x, y))
+            x += vx
+            y += vy
+            if 0 <= x < square_num and 0 <= y < square_num and board[y][x] == player:
+                for flip_x, flip_y in flip_list:
+                    board[flip_y][flip_x] = player
 
 
 run = True
