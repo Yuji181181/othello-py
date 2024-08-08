@@ -26,12 +26,20 @@ square_size = 800//square_num
 
 
 
+
+
 def draw_grid():    
     for i in range(square_num):
         pygame.draw.line(screen,BLACK,(0,i*square_size),(800,i*square_size),3)
         pygame.draw.line(screen,BLACK,(i*square_size,0),(i*square_size,800),3)
 
-
+def draw_board():
+    for row_index, row in enumerate(board):
+        for col_index, col in enumerate(row):
+            if col == 1:
+                pygame.draw.circle(screen, BLACK, (col_index * square_size + 50, row_index * square_size + 50), 45)
+            elif col == -1:
+                pygame.draw.circle(screen, WHITE, (col_index * square_size + 50, row_index * square_size + 50), 45)
 
 
 run = True
@@ -39,6 +47,7 @@ while run:
     
     screen.fill(GREEN)
     draw_grid()
+    draw_board()
     
     
     for event in pygame.event.get():
