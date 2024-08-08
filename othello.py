@@ -21,7 +21,7 @@ pass_num = 0
 font = pygame.font.SysFont(None,100,bold=False,italic=False)
 black_win_surface = font.render("Black Win!",False,BLACK,RED)
 white_win_surface = font.render("White Win!",False,WHITE,RED)
-draw_surface = font.render("Draw...", False,BLUE,RED)
+draw_surface = font.render("Draw...",False,BLUE,RED)
 reset_surface = font.render("Click to reset!",False,BLACK,RED)
 
 board = [
