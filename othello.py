@@ -24,6 +24,21 @@ board = [
 square_num = 8
 square_size = 800//square_num
 
+player = 1
+
+vec_table = [
+    (-1, -1),  
+    (0, -1),    
+    (1, -1),    
+    (-1, 0),   
+    (1, 0),  
+    (-1, 1),   
+    (0, 1),    
+    (1, 1)] 
+
+game_over = False
+pass_num = 0
+
 
 
 
@@ -53,7 +68,12 @@ while run:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
-    
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if game_over == False:
+                mx, my = pygame.mouse.get_pos()
+                x = mx // square_size
+                y = my // square_size
+                if board[y][x] == 0 and (x, y) in valid_position_list:
     
     
     
