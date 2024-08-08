@@ -21,6 +21,16 @@ board = [
     [0, 0, 0, 0, 0, 0, 0, 0]]
 # 黒：1、白：-1
 
+square_num = 8
+square_size = 800//square_num
+
+
+
+def draw_grid():    
+    for i in range(square_num):
+        pygame.draw.line(screen,BLACK,(0,i*square_size),(800,i*square_size),3)
+        pygame.draw.line(screen,BLACK,(i*square_size,0),(i*square_size,800),3)
+
 
 
 
@@ -28,12 +38,13 @@ run = True
 while run:
     
     screen.fill(GREEN)
-    
+    draw_grid()
     
     
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+    
     
     
     
