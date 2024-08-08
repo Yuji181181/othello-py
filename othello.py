@@ -58,6 +58,16 @@ def draw_board():
             elif col == -1:
                 pygame.draw.circle(screen, WHITE, (col_index * square_size + 50, row_index * square_size + 50), 45)
 
+valid_position_list = []
+    for row in range(square_num):
+        for col in range(square_num):
+            #石を置いていないマスのみチェック
+            if board[row][col] == 0:
+                for vx, vy in vec_table:
+                    x = vx + col
+                    y = vy + row
+
+
 
 run = True
 while run:
