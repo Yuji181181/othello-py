@@ -10,6 +10,20 @@ GREEN = (0, 128, 0)
 BLUE = (0, 0, 255)
 YELLOW = (255, 255, 0)
 
+square_num = 8
+square_size = 800//square_num
+
+player = 1
+
+game_over = False
+pass_num = 0
+
+font = pygame.font.SysFont(None, 100, bold=False, italic=False)
+black_win_surface = font.render("Black Win!", False, BLACK, RED)
+white_win_surface = font.render("White Win!", False, WHITE, RED)
+draw_surface = font.render("Draw...", False, BLUE, RED)
+reset_surface = font.render("Click to reset!",False, BLACK, RED)
+
 board = [
     [0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0],
@@ -21,11 +35,6 @@ board = [
     [0, 0, 0, 0, 0, 0, 0, 0]]
 # 黒：1、白：-1
 
-square_num = 8
-square_size = 800//square_num
-
-player = 1
-
 vec_table = [
     (-1, -1),  
     (0, -1),    
@@ -35,17 +44,6 @@ vec_table = [
     (-1, 1),   
     (0, 1),    
     (1, 1)] 
-
-game_over = False
-pass_num = 0
-
-font = pygame.font.SysFont(None, 100, bold=False, italic=False)
-black_win_surface = font.render("Black Win!", False, BLACK, RED)
-white_win_surface = font.render("White Win!", False, WHITE, RED)
-draw_surface = font.render("Draw...", False, BLUE, RED)
-reset_surface = font.render("Click to reset!",False, BLACK, RED)
-
-
 
 def draw_grid():    
     for i in range(square_num):
