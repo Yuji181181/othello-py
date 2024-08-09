@@ -114,6 +114,19 @@ while run:
         pass_num = 2
         game_over = True
     
+    black_num = 0
+    white_num = 0
+    if game_over:
+        black_num = sum(row.count(1) for row in board)
+        white_num = sum(row.count(-1) for row in board)
+        if black_num > white_num:
+            screen.blit(black_win_surface, (230, 200))
+        elif black_num < white_num:
+            screen.blit(white_win_surface, (230, 200))
+        else:
+            screen.blit(draw_surface, (280, 200))
+        screen.blit(reset_surface, (180, 400))
+    
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
@@ -123,17 +136,23 @@ while run:
                 x = mx // square_size
                 y = my // square_size
                 if board[y][x] == 0 and (x, y) in valid_position_list:
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+                    flip_pieces(x, y)
+                    board[y][x] = player
+                    player *= -1
+                    pass_num = 0
+            else:
+                board = [
+                    [0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, -1, 1, 0, 0, 0],
+                    [0, 0, 0, 1, -1, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0],
+                    [0, 0, 0, 0, 0, 0, 0, 0]]
+                player = 1
+                game_over = False
+                pass_num = 0
     
     pygame.display.update()
 
